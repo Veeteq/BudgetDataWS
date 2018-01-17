@@ -39,7 +39,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="">Home</a></li>
-            <li><a href="">Expenses</a></li>
+            <li><a href="expenses?new">Expenses</a></li>
             <li><a href="">Incomes</a></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <span class="caret"></span></a>
@@ -63,7 +63,7 @@
     
     <div class="container-fluid">
       <div class="row col-lg-4" >
-        <table class="table table-hover">
+        <table class="table table-hover table-condensed">
           <thead>
             <tr>
               <th>ID</th>
