@@ -98,7 +98,7 @@
                         </div>
                       </div>
                     </div>
-                    
+                    <input type="hidden" id="reloadPage" name="reloadPage" value=""/>
 					<!-- Text input-->
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="user">User</label>

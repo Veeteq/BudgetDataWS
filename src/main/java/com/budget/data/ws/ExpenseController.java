@@ -36,8 +36,8 @@ public class ExpenseController {
 	@Autowired
 	ExpenseService expenseService;
 	
-	@RequestMapping(params="new")
-	public String createForm(Model model, Locale locale){
+	@RequestMapping(params={"new","reloadPage='true'"},method=RequestMethod.GET)
+	public String reloadForm(Model model, Locale locale){
 		logger.info("starting newExpense() method");
 
 		Date date = new Date();
@@ -51,6 +51,21 @@ public class ExpenseController {
 		return "expenses/new";
 	}
 
+	@RequestMapping(params="new",method=RequestMethod.GET)
+	public String createForm(Model model, Locale locale){
+		logger.info("starting newExpense() method");
+
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM, locale);
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("formattedDate", formattedDate);
+		model.addAttribute("expense", new Expense());
+		model.addAttribute("items", itemService.getAll());
+		model.addAttribute("users", userService.getAll());
+		return "expenses/new";
+	}
+	
 	@RequestMapping(method=RequestMethod.POST)
 	public String saveExpense(@ModelAttribute(name="expense") @Valid Expense expense, BindingResult bindingResult){
 		logger.info("starting saveExpense() method");
